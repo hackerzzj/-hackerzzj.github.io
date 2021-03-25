@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="java java构造赋值，先父类后子类，先默认后构造的顺序。 父类与子类： ​         子父类拥有相同的变量，规则：自己有用自己，自己无用父类。      父类实现先于子类实现，显式调用父类构造器或者隐藏调用父类无参构造器 ​    Serializable接口，相当于一个标志，告诉jvm可以将该类的对象进行序列化和反序列化。（可以使用transient修饰那些不需要序列化的属性），最好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/03/25/java/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java java构造赋值，先父类后子类，先默认后构造的顺序。 父类与子类： ​         子父类拥有相同的变量，规则：自己有用自己，自己无用父类。      父类实现先于子类实现，显式调用父类构造器或者隐藏调用父类无参构造器 ​    Serializable接口，相当于一个标志，告诉jvm可以将该类的对象进行序列化和反序列化。（可以使用transient修饰那些不需要序列化的属性），最好">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-25T10:52:47.337Z">
+<meta property="article:modified_time" content="2021-03-25T09:37:29.076Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/03/25/java/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/25/java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-25 18:52:47 / 修改时间：17:37:29" itemprop="dateCreated datePublished" datetime="2021-03-25T18:52:47+08:00">2021-03-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>java</p>
+<p>java构造赋值，先父类后子类，先默认后构造的顺序。</p>
+<p>父类与子类：</p>
+<p>​         子父类拥有相同的变量，规则：自己有用自己，自己无用父类。</p>
+<pre><code>     父类实现先于子类实现，显式调用父类构造器或者隐藏调用父类无参构造器</code></pre>
+<p>​    Serializable接口，相当于一个标志，告诉jvm可以将该类的对象进行序列化和反序列化。（可以使用transient修饰那些不需要序列化的属性），最好自己写一个serialVersionUID(static final long)，不会序列化static关键字修饰的属性。如果父类没有实现Serializable接口，那么必须有无参构造函数。</p>
+<p>​    Externalizable接口，需要重写writeExternal和readExternal方法,效率比Serializable高，可以决定哪些属性需要序列化（即使transient修饰的），但是面对大量对象，或者重复对象，则效率低。</p>
+<p>​    package打包后的类可以不在同一个文件夹中，但是所在文件夹的名字必须与包名一致。</p>
+<p>​    import关键字，使用*号时，只会导入该包内的类，并不会导入包。</p>
+<p>​    </p>
+<p>抽象类：</p>
+<p>​    防止创建没有对象性质的对象（例如：动物），只应该有方法声明，不应该有方法主题。</p>
+<p>​    抽象类也是具有构造函数的，所有子类实现都必须先执行抽象类的构造函数。</p>
+<p>​    抽象类中可以存在0到多个抽象方法，也可存在0到多个非抽象方法</p>
+<p>接口：</p>
+<p>​    接口是一种特殊的抽象类，也是引用数据类型（数组，类，接口）,包含抽象方法( public abstract)，（静态方法和默认方法(default不可省)）jdk8以后，成员属性都是常量（public static final）</p>
+<p>​    默认方法，子类不需要重写。</p>
+<p>​    实现接口是为了实现某个功能，是为了进行拓展。</p>
+<p>类中代码会在属性初始化之后，无参构造函数之前</p>
+<p>static</p>
+<p>​    static 关键字修饰的 可以继承 但是不可以重写</p>
+<p>final    </p>
+<p>​    final 修饰成员变量必须赋值（直接赋值，代码块赋值，构造方法赋值），修饰局部变量可以声明和赋值分开。</p>
+<p>​    final修饰的形参也是不能改变的</p>
+<p>​    final 修饰引用类型，可以更改引用对象。</p>
+<p>​    static final 修饰的就是一个常量  （直接赋值，静态代码块赋值）</p>
+<p>​    final 修饰的方法不允许被重写</p>
+<p>​    final 修饰的类不能被继承</p>
+<p>多态</p>
+<p>​    成员属性看左边，成员方法看右边（方法里面用右边变量）</p>
+<p>Hashcode编码</p>
+<p>​    用的Object.hash(Object… values)   底层 Arrays.hashCode(values)</p>
+<p>实现clone方法</p>
+<p>​    实现Cloneable接口,才能重写Object类的clone方法</p>
+<p>javaBean规范</p>
+<p>​    必须要有包</p>
+<p>​    属性私有化</p>
+<p>​    get、set方法</p>
+<p>​    实现接口序列化  Serializable</p>
+<p>​    public修饰类</p>
+<p>​    增加无参构造函数</p>
+<p>String类</p>
+<p>​    底层char数组，String对象永远不变</p>
+<p>​    字符串池的存在，所以字符串字面量是共享的</p>
+<p>​    底层是char数组，所以可以进行char数组和字符串的互转</p>
+<p>​    intern方法: （手动优化）如果字符串池中有则返回字符串池中得，否则向池中添加再返回</p>
+<p>​    match方法：正则表达式</p>
+<p>StringBuilder（异步，不安全）</p>
+<p>​    append: 添加</p>
+<p>​    insert: 插入位置的前面</p>
+<p>​    delete: 删除包前不包后</p>
+<p>正则表达式的作用</p>
+<p>​    判断句子是否符合你的规则   match</p>
+<p>​    按照你的规则进行文本切割   split</p>
+<p>​    在文本中替换你想要得格式    replaceAll</p>
+<p>​    </p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>匹配任意一个字符，除了\n</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[]</td>
+<td>匹配[]中列举的类型</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字，即0-9</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配非数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白，tab 空格</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配单词字符，即a-z,A-Z,_,0-9</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非单词字符</td>
+</tr>
+</tbody></table>
+<p>正则表达式的斜杠成双原则  \ \        因为编辑器认为\后的字母应该被转义，但是又找不到应该转义成的字符，我们需要的是一个完整的\d，所以斜杠成双。</p>
+<table>
+<thead>
+<tr>
+<th>*</th>
+<th>匹配前一个字符0或无数次，即可有可无</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>匹配前一个字符1或无数次，即至少有一次</td>
+</tr>
+<tr>
+<td>？</td>
+<td>匹配前一个字符1或0次，即不会多于一次</td>
+</tr>
+<tr>
+<td>{m}</td>
+<td>匹配前一个字符m次</td>
+</tr>
+<tr>
+<td>{m,}</td>
+<td>匹配前一个字符至少m次</td>
+</tr>
+<tr>
+<td>{m,n}</td>
+<td>匹配前一个字符m到n次</td>
+</tr>
+</tbody></table>
+<h4 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h4><p>long类型 仅仅是返回值类型 System.currentTimeMillis(),  1970年到现在的毫秒数</p>
+<p>Data类型  日期 桥梁  由于千年虫事件 基本上不使用  被用来进行long类型和Calendar类型的数据转换以及时间的展示</p>
+<p>Calendar类型  日历 日期的运算 属于抽象类，使用它的子类（GregorianGalendar）进行实例化，或者使用Calendar中的getInstance()方法  子类gregorianCalendar</p>
+<p>从字符串转换为时间类型  DateFormat 抽象类，子类simpleDateFormat</p>
+<p>格式化 date–》string</p>
+<p>解析 string—》date</p>
+<h4 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h4><p>​    Collection 接口</p>
+<p>add，remove，size，contains</p>
+<p>addAll,  合并不会去重</p>
+<p>removeAll, 去重交集</p>
+<p>retainAll  得到交集</p>
+<p>根据类型的equals和hashcode进行判断</p>
+<h3 id="List接口-默认为集合-（有序、重复）"><a href="#List接口-默认为集合-（有序、重复）" class="headerlink" title="List接口 ===默认为集合  （有序、重复）"></a>List接口 ===默认为集合  （有序、重复）</h3><p>List允许出现重复元素，线性方式的有序存储，通过索引来访问集合中的指定元素</p>
+<h5 id="如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"><a href="#如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。" class="headerlink" title="*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"></a>*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。</h5><p>ArrayList在操作指定下标的任意元素上面，速度比较快。(查找上和指定下标操作的操作上速度比较快)。</p>
+<p>LinkedList底层是双向链表，所以在操作首尾元素的操作上速度比较快。</p>
+<p>vector自从ArrayList出现以后，就不再使用了</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>相当于把所有的集合元素按照他们指定的顺序排放在一个类似于线性表的集合中。</p>
+<p>使用集合对象调用iterator方法，获取iterator对象，如果有泛型，iterator也可以使用相应的泛型。</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>为了将运行时异常转换为编译时异常（深层次）</p>
+<p>泛型不存在继承关系</p>
+<h3 id="set接口"><a href="#set接口" class="headerlink" title="set接口"></a>set接口</h3><p>set接口中的元素无序，并且存入的元素不重复出现。</p>
+<p>HashSet</p>
+<p>​    无序且不重复、重写hashcode和equals方法</p>
+<p>LinkedHashSet</p>
+<p>​        有序</p>
+<p>TreeSet(实现了set和sortset)</p>
+<p>​     具有自然排序功能的类</p>
+<p>​    可以自定义排序</p>
+<p>​    不重复，不能放null</p>
+<p>​    因为TreeSet这个类需要吧里面的元素进行统一类型来比较，所以会配套使用泛型</p>
+<p>​    TreeSet对自定义数据类型进行排序的话，需要两个前提</p>
+<p>​                实现comparable接口</p>
+<p>​                有具体的排序方法</p>
+<h3 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h3><p>在java中有两个常用的接口，分别是Comparator接口和Comparable接口</p>
+<p>Comparator接口</p>
+<p>​    临时  重写 compare方法 两个参数</p>
+<p>​    经常在Arrays.sort以及Collections.sort里面来使用</p>
+<p>​    不能在TreeSet中使用</p>
+<p>​    使用内名内部类</p>
+<p>Comparable接口</p>
+<p>​    持久 重写 compareTo方法  一个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 都返回0的话，就会输出一个元素</span><br><span class="line">&#x2F;&#x2F; 返回正数时，代表该属性值的升序--&gt;本身属性-参数属性</span><br><span class="line">&#x2F;&#x2F; 返回负数时，代表该属性值的降序--&gt;参数属性-本身属性</span><br></pre></td></tr></table></figure>
+
+<h3 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h3><p> 等同于set的定义，建唯一不重复。键值对</p>
+<p>​    键 无序、无下标、不允许重复</p>
+<p>​    值 无序、无下标、允许重复</p>
+<p>HashMap 不能保证顺序，键采用自定义类型时，就要重写hashCode和equals方法</p>
+<p>LinkedHashMap  多了排序的功能</p>
+<p>TreeSet 自然排序且键不重复，可以采用自定义比较。</p>
+<p>HashMap与Hashtable的关系    ArrayList和vector的关系</p>
+<h3 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h3><p>​    编写错误不属于异常（需要try catch的才是编译型异常）</p>
+<p>​    printStackTrace() 打印异常的详细信息。包含了异常的类型，异常的原因，异常出现的位置</p>
+<p>​    getMessage() 获取异常的原因</p>
+<p>​    toString() 获取异常的类型和异常描述信息</p>
+<p>异常处理方式</p>
+<p>​    try  catch  finally   不加catch的话会结束程序的执行</p>
+<p>​    throw 后面跟异常对象  并且结束当前方法的执行 </p>
+<p>​    throw 后面如果接运行时环境，一旦改代码执行，那么程序会停止，如果后面是检查时异常，就会要求你处理异常，程序不会停止。</p>
+<p>​    如果throw后面跟的是一个编译时异常，jvm就会要求你必须处理此异常</p>
+<p>​    throws 放在方法结构尾部，用来告诉方法的调用者，这个方法有异常。</p>
+<p>​    Exception 和 继承Exception类的子类 属于编译期异常（除了RuntimeException 和 它的子类）</p>
+<p>​    RuntimeException和继承 了RuntimeException的子类</p>
+<p>​    自定义异常就是继承Exception或RuntimeException</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/01/Mobx-React%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%BA%93%EF%BC%88%E5%85%A5%E9%97%A8%EF%BC%89/" rel="prev" title="Mobx:React状态管理库（入门）">
+      <i class="fa fa-chevron-left"></i> Mobx:React状态管理库（入门）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/25/js%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">时间类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">集合类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List%E6%8E%A5%E5%8F%A3-%E9%BB%98%E8%AE%A4%E4%B8%BA%E9%9B%86%E5%90%88-%EF%BC%88%E6%9C%89%E5%BA%8F%E3%80%81%E9%87%8D%E5%A4%8D%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">List接口 &#x3D;&#x3D;&#x3D;默认为集合  （有序、重复）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Clist%E6%98%AFInteger%E6%B3%9B%E5%9E%8B%E7%9A%84%E8%AF%9D%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8remove%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%99%E9%87%8C%E5%BF%85%E9%A1%BB%E8%A6%81%E7%90%86%E8%A7%A3%E7%9A%84%E6%98%AF%EF%BC%9A%E5%A6%82%E6%9E%9C%E4%B8%8D%E9%9C%80%E8%A6%81%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E5%B0%B1%E8%83%BD%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%9D%EF%BC%8C%E5%B0%B1%E4%B8%8D%E4%BC%9A%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E3%80%82"><span class="nav-number">0.1.</span> <span class="nav-text">*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">迭代器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set%E6%8E%A5%E5%8F%A3"><span class="nav-number"></span> <span class="nav-text">set接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">比较器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map%E6%8E%A5%E5%8F%A3"><span class="nav-number"></span> <span class="nav-text">Map接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Throwable"><span class="nav-number"></span> <span class="nav-text">Throwable</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
