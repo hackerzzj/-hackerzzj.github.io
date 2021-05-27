@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/SSM%E6%A1%86%E6%9E%B6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/springBoot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,7 +169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/01/SSM%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">SSM框架</a>
+            <a href="/2021/04/15/springBoot/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -179,15 +179,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-12-01 11:26:32" itemprop="dateCreated datePublished" datetime="2020-12-01T11:26:32+08:00">2020-12-01</time>
+              <time title="创建时间：2021-04-15 22:00:49" itemprop="dateCreated datePublished" datetime="2021-04-15T22:00:49+08:00">2021-04-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-25 20:14:12" itemprop="dateModified" datetime="2021-03-25T20:14:12+08:00">2021-03-25</time>
-              </span>
 
           
 
@@ -200,58 +193,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="SSM框架-mybites框架"><a href="#SSM框架-mybites框架" class="headerlink" title="SSM框架-mybites框架"></a>SSM框架-mybites框架</h1><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
-<li><p>创建maven工程并且引入坐标</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>x.x.x<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11 <span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>创建实体类和dao的接口</p>
-</li>
-<li><p>创建Mybatis的主配置文件（SqlMapConfig.xml）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">getAll</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/example/BlogMapper.xml&quot;</span>/&gt;</span><span class="comment">&lt;!--通过xml的方式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.example.BlogDao&quot;</span>/&gt;</span><span class="comment">&lt;!--通过注解的方式，class为注解的类--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="4">
-<li><p>创建映射配置文件（IUserDao.xml）</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.mybatis.example.BlogMapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectBlog&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">    select * from Blog where id = #&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
-<li>创建映射配置文件时，文件的目录结构要和dao层的目录结构相同，方便mybatis的自动寻找。</li>
-<li>映射配置文件的mapper标签namespace属性取值dao接口的权限定类名</li>
-<li>映射配置文件的操作配置（select），id属性取值dao接口类的方法名</li>
-</ol>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 配置文件</span></span><br><span class="line">InputStream in =Resources.getResourceAsStream(<span class="string">&quot;SqlMapConfig.xml&quot;</span>);</span><br><span class="line"><span class="comment">// 创建SqlSessionFactory 对象 并且得到session对象</span></span><br><span class="line">SqlSessionFactory factory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(in);</span><br><span class="line">SqlSession sqlSession = factory.openSession();</span><br><span class="line"><span class="comment">// 通过session对象获取到dao接口的动态代理对象</span></span><br><span class="line">IUser userimpl = sqlSession.getMapper(IUser.class);</span><br><span class="line"><span class="comment">// 使用动态代理类得到数据</span></span><br><span class="line">List&lt;user&gt; all = userimpl.getAll();</span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line">sqlSession.close();</span><br><span class="line">in.close();</span><br></pre></td></tr></table></figure>
-
-<h4 id="读取配置文件"><a href="#读取配置文件" class="headerlink" title="读取配置文件"></a>读取配置文件</h4><ol>
-<li>使用类加载器读取，他只能读取类路径下的配置文件。</li>
-<li>使用ServletContext对象的getRealPath()方法读取配置文件。</li>
-</ol>
-<h4 id="mybatis使用代理dao的方式实现的增删改查方式"><a href="#mybatis使用代理dao的方式实现的增删改查方式" class="headerlink" title="mybatis使用代理dao的方式实现的增删改查方式"></a>mybatis使用代理dao的方式实现的增删改查方式</h4><ol>
-<li><p>创建代理对象（可以使用dom4j的技术来解析xml文件）</p>
-<p>连接数据库的信息（xml文件中）connection</p>
-<p>mapper映射配置信息</p>
-<p>通过mapper配置信息找到所对应的sql语句 和 封装的实体类限定名    prepareStatement</p>
-</li>
-</ol>
-<ol start="2">
-<li>使用代理对象调用增删改查方法</li>
-</ol>
-
+          
       
     </div>
 
@@ -371,7 +313,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/java/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/SSM%E6%A1%86%E6%9E%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -385,7 +327,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/01/java/" class="post-title-link" itemprop="url">java学习</a>
+            <a href="/2020/12/01/SSM%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">SSM框架</a>
         </h2>
 
         <div class="post-meta">
@@ -402,7 +344,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-25 20:16:10" itemprop="dateModified" datetime="2021-03-25T20:16:10+08:00">2021-03-25</time>
+                <time title="修改时间：2021-05-27 13:00:01" itemprop="dateModified" datetime="2021-05-27T13:00:01+08:00">2021-05-27</time>
               </span>
 
           
@@ -416,190 +358,114 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>java</p>
-<p>java构造赋值，先父类后子类，先默认后构造的顺序。</p>
-<p>父类与子类：</p>
-<p>​         子父类拥有相同的变量，规则：自己有用自己，自己无用父类。</p>
-<pre><code>     父类实现先于子类实现，显式调用父类构造器或者隐藏调用父类无参构造器</code></pre>
-<p>​    Serializable接口，相当于一个标志，告诉jvm可以将该类的对象进行序列化和反序列化。（可以使用transient修饰那些不需要序列化的属性），最好自己写一个serialVersionUID(static final long)，不会序列化static关键字修饰的属性。如果父类没有实现Serializable接口，那么必须有无参构造函数。</p>
-<p>​    Externalizable接口，需要重写writeExternal和readExternal方法,效率比Serializable高，可以决定哪些属性需要序列化（即使transient修饰的），但是面对大量对象，或者重复对象，则效率低。</p>
-<p>​    package打包后的类可以不在同一个文件夹中，但是所在文件夹的名字必须与包名一致。</p>
-<p>​    import关键字，使用*号时，只会导入该包内的类，并不会导入包。</p>
-<p>​    </p>
-<p>抽象类：</p>
-<p>​    防止创建没有对象性质的对象（例如：动物），只应该有方法声明，不应该有方法主题。</p>
-<p>​    抽象类也是具有构造函数的，所有子类实现都必须先执行抽象类的构造函数。</p>
-<p>​    抽象类中可以存在0到多个抽象方法，也可存在0到多个非抽象方法</p>
-<p>接口：</p>
-<p>​    接口是一种特殊的抽象类，也是引用数据类型（数组，类，接口）,包含抽象方法( public abstract)，（静态方法和默认方法(default不可省)）jdk8以后，成员属性都是常量（public static final）</p>
-<p>​    默认方法，子类不需要重写。</p>
-<p>​    实现接口是为了实现某个功能，是为了进行拓展。</p>
-<p>类中代码会在属性初始化之后，无参构造函数之前</p>
-<p>static</p>
-<p>​    static 关键字修饰的 可以继承 但是不可以重写</p>
-<p>final    </p>
-<p>​    final 修饰成员变量必须赋值（直接赋值，代码块赋值，构造方法赋值），修饰局部变量可以声明和赋值分开。</p>
-<p>​    final修饰的形参也是不能改变的</p>
-<p>​    final 修饰引用类型，可以更改引用对象。</p>
-<p>​    static final 修饰的就是一个常量  （直接赋值，静态代码块赋值）</p>
-<p>​    final 修饰的方法不允许被重写</p>
-<p>​    final 修饰的类不能被继承</p>
-<p>多态</p>
-<p>​    成员属性看左边，成员方法看右边（方法里面用右边变量）</p>
-<p>Hashcode编码</p>
-<p>​    用的Object.hash(Object… values)   底层 Arrays.hashCode(values)</p>
-<p>实现clone方法</p>
-<p>​    实现Cloneable接口,才能重写Object类的clone方法</p>
-<p>javaBean规范</p>
-<p>​    必须要有包</p>
-<p>​    属性私有化</p>
-<p>​    get、set方法</p>
-<p>​    实现接口序列化  Serializable</p>
-<p>​    public修饰类</p>
-<p>​    增加无参构造函数</p>
-<p>String类</p>
-<p>​    底层char数组，String对象永远不变</p>
-<p>​    字符串池的存在，所以字符串字面量是共享的</p>
-<p>​    底层是char数组，所以可以进行char数组和字符串的互转</p>
-<p>​    intern方法: （手动优化）如果字符串池中有则返回字符串池中得，否则向池中添加再返回</p>
-<p>​    match方法：正则表达式</p>
-<p>StringBuilder（异步，不安全）</p>
-<p>​    append: 添加</p>
-<p>​    insert: 插入位置的前面</p>
-<p>​    delete: 删除包前不包后</p>
-<p>正则表达式的作用</p>
-<p>​    判断句子是否符合你的规则   match</p>
-<p>​    按照你的规则进行文本切割   split</p>
-<p>​    在文本中替换你想要得格式    replaceAll</p>
-<p>​    </p>
-<table>
-<thead>
-<tr>
-<th>.</th>
-<th>匹配任意一个字符，除了\n</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>[]</td>
-<td>匹配[]中列举的类型</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配数字，即0-9</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配非数字</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配空白，tab 空格</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配非空白</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配单词字符，即a-z,A-Z,_,0-9</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配非单词字符</td>
-</tr>
-</tbody></table>
-<p>正则表达式的斜杠成双原则  \ \        因为编辑器认为\后的字母应该被转义，但是又找不到应该转义成的字符，我们需要的是一个完整的\d，所以斜杠成双。</p>
-<table>
-<thead>
-<tr>
-<th>*</th>
-<th>匹配前一个字符0或无数次，即可有可无</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+</td>
-<td>匹配前一个字符1或无数次，即至少有一次</td>
-</tr>
-<tr>
-<td>？</td>
-<td>匹配前一个字符1或0次，即不会多于一次</td>
-</tr>
-<tr>
-<td>{m}</td>
-<td>匹配前一个字符m次</td>
-</tr>
-<tr>
-<td>{m,}</td>
-<td>匹配前一个字符至少m次</td>
-</tr>
-<tr>
-<td>{m,n}</td>
-<td>匹配前一个字符m到n次</td>
-</tr>
-</tbody></table>
-<h4 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h4><p>long类型 仅仅是返回值类型 System.currentTimeMillis(),  1970年到现在的毫秒数</p>
-<p>Data类型  日期 桥梁  由于千年虫事件 基本上不使用  被用来进行long类型和Calendar类型的数据转换以及时间的展示</p>
-<p>Calendar类型  日历 日期的运算 属于抽象类，使用它的子类（GregorianGalendar）进行实例化，或者使用Calendar中的getInstance()方法  子类gregorianCalendar</p>
-<p>从字符串转换为时间类型  DateFormat 抽象类，子类simpleDateFormat</p>
-<p>格式化 date–》string</p>
-<p>解析 string—》date</p>
-<h4 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h4><p>​    Collection 接口</p>
-<p>add，remove，size，contains</p>
-<p>addAll,  合并不会去重</p>
-<p>removeAll, 去重交集</p>
-<p>retainAll  得到交集</p>
-<p>根据类型的equals和hashcode进行判断</p>
-<h3 id="List接口-默认为集合-（有序、重复）"><a href="#List接口-默认为集合-（有序、重复）" class="headerlink" title="List接口 ===默认为集合  （有序、重复）"></a>List接口 ===默认为集合  （有序、重复）</h3><p>List允许出现重复元素，线性方式的有序存储，通过索引来访问集合中的指定元素</p>
-<h5 id="如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"><a href="#如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。" class="headerlink" title="*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"></a>*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。</h5><p>ArrayList在操作指定下标的任意元素上面，速度比较快。(查找上和指定下标操作的操作上速度比较快)。</p>
-<p>LinkedList底层是双向链表，所以在操作首尾元素的操作上速度比较快。</p>
-<p>vector自从ArrayList出现以后，就不再使用了</p>
-<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>相当于把所有的集合元素按照他们指定的顺序排放在一个类似于线性表的集合中。</p>
-<p>使用集合对象调用iterator方法，获取iterator对象，如果有泛型，iterator也可以使用相应的泛型。</p>
-<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>为了将运行时异常转换为编译时异常（深层次）</p>
-<p>泛型不存在继承关系</p>
-<h3 id="set接口"><a href="#set接口" class="headerlink" title="set接口"></a>set接口</h3><p>set接口中的元素无序，并且存入的元素不重复出现。</p>
-<p>HashSet</p>
-<p>​    无序且不重复、重写hashcode和equals方法</p>
-<p>LinkedHashSet</p>
-<p>​        有序</p>
-<p>TreeSet(实现了set和sortset)</p>
-<p>​     具有自然排序功能的类</p>
-<p>​    可以自定义排序</p>
-<p>​    不重复，不能放null</p>
-<p>​    因为TreeSet这个类需要吧里面的元素进行统一类型来比较，所以会配套使用泛型</p>
-<p>​    TreeSet对自定义数据类型进行排序的话，需要两个前提</p>
-<p>​                实现comparable接口</p>
-<p>​                有具体的排序方法</p>
-<h3 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h3><p>在java中有两个常用的接口，分别是Comparator接口和Comparable接口</p>
-<p>Comparator接口</p>
-<p>​    临时  重写 compare方法 两个参数</p>
-<p>​    经常在Arrays.sort以及Collections.sort里面来使用</p>
-<p>​    不能在TreeSet中使用</p>
-<p>​    使用内名内部类</p>
-<p>Comparable接口</p>
-<p>​    持久 重写 compareTo方法  一个参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 都返回0的话，就会输出一个元素</span><br><span class="line">&#x2F;&#x2F; 返回正数时，代表该属性值的升序--&gt;本身属性-参数属性</span><br><span class="line">&#x2F;&#x2F; 返回负数时，代表该属性值的降序--&gt;参数属性-本身属性</span><br></pre></td></tr></table></figure>
+          <h1 id="SSM框架-mybites框架"><a href="#SSM框架-mybites框架" class="headerlink" title="SSM框架-mybites框架"></a>SSM框架-mybites框架</h1><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p>创建maven工程并且引入坐标</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>x.x.x<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11 <span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h3><p> 等同于set的定义，建唯一不重复。键值对</p>
-<p>​    键 无序、无下标、不允许重复</p>
-<p>​    值 无序、无下标、允许重复</p>
-<p>HashMap 不能保证顺序，键采用自定义类型时，就要重写hashCode和equals方法</p>
-<p>LinkedHashMap  多了排序的功能</p>
-<p>TreeSet 自然排序且键不重复，可以采用自定义比较。</p>
-<p>HashMap与Hashtable的关系    ArrayList和vector的关系</p>
-<h3 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h3><p>​    编写错误不属于异常（需要try catch的才是编译型异常）</p>
-<p>​    printStackTrace() 打印异常的详细信息。包含了异常的类型，异常的原因，异常出现的位置</p>
-<p>​    getMessage() 获取异常的原因</p>
-<p>​    toString() 获取异常的类型和异常描述信息</p>
-<p>异常处理方式</p>
-<p>​    try  catch  finally   不加catch的话会结束程序的执行</p>
-<p>​    throw 后面跟异常对象  并且结束当前方法的执行 </p>
-<p>​    throw 后面如果接运行时环境，一旦改代码执行，那么程序会停止，如果后面是检查时异常，就会要求你处理异常，程序不会停止。</p>
-<p>​    如果throw后面跟的是一个编译时异常，jvm就会要求你必须处理此异常</p>
-<p>​    throws 放在方法结构尾部，用来告诉方法的调用者，这个方法有异常。</p>
-<p>​    Exception 和 继承Exception类的子类 属于编译期异常（除了RuntimeException 和 它的子类）</p>
-<p>​    RuntimeException和继承 了RuntimeException的子类</p>
-<p>​    自定义异常就是继承Exception或RuntimeException</p>
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>创建实体类和dao的接口</p>
+</li>
+<li><p>创建Mybatis的主配置文件（SqlMapConfig.xml）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">getAll</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/example/BlogMapper.xml&quot;</span>/&gt;</span><span class="comment">&lt;!--通过xml的方式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.example.BlogDao&quot;</span>/&gt;</span><span class="comment">&lt;!--通过注解的方式，class为注解的类--&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="4">
+<li><p>创建映射配置文件（IUserDao.xml）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.mybatis.example.BlogMapper&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectBlog&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">    select * from Blog where id = #&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
+<li>创建映射配置文件时，文件的目录结构要和dao层的目录结构相同，方便mybatis的自动寻找。</li>
+<li>映射配置文件的mapper标签namespace属性取值dao接口的权限定类名</li>
+<li>映射配置文件的操作配置（select），id属性取值dao接口类的方法名</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 配置文件</span></span><br><span class="line">InputStream in =Resources.getResourceAsStream(<span class="string">&quot;SqlMapConfig.xml&quot;</span>);</span><br><span class="line"><span class="comment">// 创建SqlSessionFactory 对象 并且得到session对象</span></span><br><span class="line">SqlSessionFactory factory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(in);</span><br><span class="line">SqlSession sqlSession = factory.openSession();</span><br><span class="line"><span class="comment">// 通过session对象获取到dao接口的动态代理对象</span></span><br><span class="line">IUser userimpl = sqlSession.getMapper(IUser.class);</span><br><span class="line"><span class="comment">// 使用动态代理类得到数据</span></span><br><span class="line">List&lt;user&gt; all = userimpl.getAll();</span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line">sqlSession.close();</span><br><span class="line">in.close();</span><br></pre></td></tr></table></figure>
+
+<h4 id="读取配置文件"><a href="#读取配置文件" class="headerlink" title="读取配置文件"></a>读取配置文件</h4><ol>
+<li>使用类加载器读取，他只能读取类路径下的配置文件。</li>
+<li>使用ServletContext对象的getRealPath()方法读取配置文件。</li>
+</ol>
+<h4 id="mybatis使用代理dao的方式实现的增删改查方式"><a href="#mybatis使用代理dao的方式实现的增删改查方式" class="headerlink" title="mybatis使用代理dao的方式实现的增删改查方式"></a>mybatis使用代理dao的方式实现的增删改查方式</h4><ol>
+<li><p>创建代理对象（可以使用dom4j的技术来解析xml文件）</p>
+<p>连接数据库的信息（xml文件中）connection</p>
+<p>mapper映射配置信息</p>
+<p>通过mapper配置信息找到所对应的sql语句 和 封装的实体类限定名    prepareStatement</p>
+</li>
+</ol>
+<ol start="2">
+<li>使用代理对象调用增删改查方法</li>
+</ol>
+<p>——————————东软</p>
+<p>dispatchServlet 是 springmvc的核心拦截器，拦截所有的请求</p>
+<p>handlerMapping 相当于MAP  ， key 为 url ，value 为 Handler</p>
+<ul>
+<li>Handler   里面有类名，方法名，参数列表</li>
+</ul>
+<p>handlerMapping 将 Handler 返回给 dispatchServlet </p>
+<p>dispatchServlet  将获取到的对象给 HandlerAdapter</p>
+<p>HandlerAdapter 解析 Handler   里面的类名，方法名，参数列表 并进行<strong>调用</strong></p>
+<p>HandlerAdapter 调用完的返回值给 dispatchServlet  </p>
+<p>dispatchServlet  将返回值 给 视图解析器</p>
+<p>视图解析器  通过返回值找到相应的页面进行转发。</p>
+<h2 id="handlerMapping"><a href="#handlerMapping" class="headerlink" title="handlerMapping"></a>handlerMapping</h2><p><strong>注意</strong> ：需要配置handlerMapping的配置文件 namespace 或者（servlet名字-service）  WEB-INF目录下面</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.开启注解驱动</span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line">2、包扫瞄（只有包里面加了@Controller注解的类才会被扫描到，方法上加上@RequestMapping注解）</span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;被扫描的包名&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">3、配置视图解析器</span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;viewClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;org.springframework.web.servlet.view.JstlView&quot;</span>&gt;</span>		<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/pages&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>向作用域里放入变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、使用HttpServletRequest</span></span><br><span class="line">HttpServletRequest.setAttribute(key,value)</span><br><span class="line"><span class="comment">// 2、使用ModalMap</span></span><br><span class="line">ModalMap.setAttribute(key,value)</span><br><span class="line"><span class="comment">//3、使用ModalAndView，需要先new一个对象 并且返回值改变为ModalAndView</span></span><br><span class="line">ModalAndView modalAndView = <span class="keyword">new</span> ModalAndView(<span class="string">&quot;abcd&quot;</span>) <span class="comment">// abcd 是js页面</span></span><br><span class="line">modalAndView.addObject(key,value)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用springmvc 重定向 return “redirect:xxx”</p>
+<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>使用了前后端分离，就不能进行转发和重定向了，应该向前台发送json或者xml来传送字符流。</p>
+<p>可以使用fastJson来进行对象与json之间的转换。</p>
+<p>使用 JSONObject.toJSONString()</p>
+<p>如果想直接返回json数组，而不想转发或者重定向到jsp页面上。可以使用@ResponseBody注解或者使用response.getWriter().write(json字符串)</p>
+<p>前后端分离会产生跨域请求问题：解决方法（使用filter）filter所在包org.catalina.filters.CorsFilter  </p>
+<h3 id="VUEJS"><a href="#VUEJS" class="headerlink" title="VUEJS"></a>VUEJS</h3><p>vuejs是分区域进行控制的，可以绑定数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Vue =   <span class="keyword">new</span> VUE(&#123;“el”:<span class="string">&quot;#app&quot;</span>,<span class="string">&quot;data&quot;</span>:&#123;<span class="string">&quot;abcd&quot;</span>:<span class="string">&quot;123456&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>数据使用 </p>
+<p>使用for循环或if 要在标签里面写,与jstl不同，jstl是进行包裹。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr v-<span class="keyword">for</span>=<span class="string">&quot;student in list&quot;</span>&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123;student.name&#125;&#125;&lt;/td&gt;    </span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用v-model进行双向绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; @click 代表使用vue里面的方法,如果使用vue作用域中的内容，则不再需要&#123;&#123;&#125;&#125; eg:@click&#x3D;del(student.id)</span><br><span class="line">var Vue &#x3D;   new VUE(&#123;</span><br><span class="line">“el”:&quot;#app&quot;,</span><br><span class="line">&quot;data&quot;:&#123;</span><br><span class="line">&quot;abcd&quot;:&quot;123456&quot;,</span><br><span class="line">&quot;student&quot;:&#123;</span><br><span class="line">	&quot;name&quot;:&quot;&quot;,</span><br><span class="line">	&quot;age&quot;:&quot;&quot;,</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;methods&quot;:&#123;</span><br><span class="line">  &quot;submit&quot;:function()&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>数据库</p>
+<p>模糊查询 添加条件 用concat函数进行字符串拼接</p>
+<p>IOC控制反转   使用setting注入和构造注入，建造xml文件，每一个对象是一个bean （要有id 和 class）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;i3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.neuedu.test.I3&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- setter注入，条用set方法为私有属性赋值 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注意name不是属性的名字，是setter方法去掉set首字母大写 与el表达式相同--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 构造方法给私有属性赋值--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;abc&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;mainBoard&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.neuedu.test.MainBoard&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 如果属性是一个对象的话，value改成ref --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;cpu&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;i3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">     </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用配置文件实现工厂模式</p>
+<p>导包  spring-context (applicationContext.xml 是写bean的xml，名字随便取)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;classpath:applicationContext.xml&quot;</span>)</span><br><span class="line">MainBoard mainBoard = (MainBoard)context.getBean(<span class="string">&#x27;mainBoard&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用spring的IOC（控制反转）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.neuedu.test&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>类上添加@Component @Repository @Service @Controller 这四种注解的其中一种都能被扫描进去</p>
+<p>依赖的属性要写上@Autowired @Resource 注解</p>
+<p>main方法无法提前解析配置文件，所以只能使用JUNIT进行测试。还要导入spring的测试包。spring testContex framework, 而且需要在测试类上加上@RunWith(SpringJUnit4ClassRunner.class) 为了告诉启动时加载xml配置文件。@contextConfiguration(locations=”classpath:applicationContext.xml”) 为了告诉配置文件在哪里。</p>
+<h3 id="监听器（可以实现服务器启动解析配置文件）需要在web-xml文件中配置listener节点"><a href="#监听器（可以实现服务器启动解析配置文件）需要在web-xml文件中配置listener节点" class="headerlink" title="监听器（可以实现服务器启动解析配置文件）需要在web.xml文件中配置listener节点"></a>监听器（可以实现服务器启动解析配置文件）需要在web.xml文件中配置listener节点</h3><p>创建过程 实现 listener接口</p>
+<p>​    web.xml中配置listener（org.springframework.web.context.ContextLoaderListener）</p>
+<p>​    还要配置一个参数告诉监听器配置文件是哪一个。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicatinContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>stringUtils类可是判断是否字符串为空，需要导包 org.apache.commons.lang3.StringUtils </p>
 
       
     </div>
@@ -1387,6 +1253,495 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/01/java/" class="post-title-link" itemprop="url">java学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-01 11:26:32" itemprop="dateCreated datePublished" datetime="2020-12-01T11:26:32+08:00">2020-12-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-20 16:51:58" itemprop="dateModified" datetime="2021-05-20T16:51:58+08:00">2021-05-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>java</p>
+<p>java构造赋值，先父类后子类，先默认后构造的顺序。</p>
+<p>父类与子类：</p>
+<p>​         子父类拥有相同的变量，规则：自己有用自己，自己无用父类。</p>
+<pre><code>     父类实现先于子类实现，显式调用父类构造器或者隐藏调用父类无参构造器</code></pre>
+<p>​    Serializable接口，相当于一个标志，告诉jvm可以将该类的对象进行序列化和反序列化。（可以使用transient修饰那些不需要序列化的属性），最好自己写一个serialVersionUID(static final long)，不会序列化static关键字修饰的属性。如果父类没有实现Serializable接口，那么必须有无参构造函数。</p>
+<p>​    Externalizable接口，需要重写writeExternal和readExternal方法,效率比Serializable高，可以决定哪些属性需要序列化（即使transient修饰的），但是面对大量对象，或者重复对象，则效率低。</p>
+<p>​    package打包后的类可以不在同一个文件夹中，但是所在文件夹的名字必须与包名一致。</p>
+<p>​    import关键字，使用*号时，只会导入该包内的类，并不会导入包。</p>
+<p>​    </p>
+<p>抽象类：</p>
+<p>​    防止创建没有对象性质的对象（例如：动物），只应该有方法声明，不应该有方法主题。</p>
+<p>​    抽象类也是具有构造函数的，所有子类实现都必须先执行抽象类的构造函数。</p>
+<p>​    抽象类中可以存在0到多个抽象方法，也可存在0到多个非抽象方法</p>
+<p>接口：</p>
+<p>​    接口是一种特殊的抽象类，也是引用数据类型（数组，类，接口）,包含抽象方法( public abstract)，（静态方法和默认方法(default不可省)）jdk8以后，成员属性都是常量（public static final）</p>
+<p>​    默认方法，子类不需要重写。</p>
+<p>​    实现接口是为了实现某个功能，是为了进行拓展。</p>
+<p>类中代码会在属性初始化之后，无参构造函数之前</p>
+<p>static</p>
+<p>​    static 关键字修饰的 可以继承 但是不可以重写</p>
+<p>final    </p>
+<p>​    final 修饰成员变量必须赋值（直接赋值，代码块赋值，构造方法赋值），修饰局部变量可以声明和赋值分开。</p>
+<p>​    final修饰的形参也是不能改变的</p>
+<p>​    final 修饰引用类型，可以更改引用对象。</p>
+<p>​    static final 修饰的就是一个常量  （直接赋值，静态代码块赋值）</p>
+<p>​    final 修饰的方法不允许被重写</p>
+<p>​    final 修饰的类不能被继承</p>
+<p>多态</p>
+<p>​    成员属性看左边，成员方法看右边（方法里面用右边变量）</p>
+<p>Hashcode编码</p>
+<p>​    用的Object.hash(Object… values)   底层 Arrays.hashCode(values)</p>
+<p>实现clone方法</p>
+<p>​    实现Cloneable接口,才能重写Object类的clone方法</p>
+<p>javaBean规范</p>
+<p>​    必须要有包</p>
+<p>​    属性私有化</p>
+<p>​    get、set方法</p>
+<p>​    实现接口序列化  Serializable</p>
+<p>​    public修饰类</p>
+<p>​    增加无参构造函数</p>
+<p>String类</p>
+<p>​    底层char数组，String对象永远不变</p>
+<p>​    字符串池的存在，所以字符串字面量是共享的</p>
+<p>​    底层是char数组，所以可以进行char数组和字符串的互转</p>
+<p>​    intern方法: （手动优化）如果字符串池中有则返回字符串池中得，否则向池中添加再返回</p>
+<p>​    match方法：正则表达式</p>
+<p>StringBuilder（异步，不安全）</p>
+<p>​    append: 添加</p>
+<p>​    insert: 插入位置的前面</p>
+<p>​    delete: 删除包前不包后</p>
+<p>正则表达式的作用</p>
+<p>​    判断句子是否符合你的规则   match</p>
+<p>​    按照你的规则进行文本切割   split</p>
+<p>​    在文本中替换你想要得格式    replaceAll</p>
+<p>​    </p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>匹配任意一个字符，除了\n</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[]</td>
+<td>匹配[]中列举的类型</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字，即0-9</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配非数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白，tab 空格</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配单词字符，即a-z,A-Z,_,0-9</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非单词字符</td>
+</tr>
+</tbody></table>
+<p>正则表达式的斜杠成双原则  \ \        因为编辑器认为\后的字母应该被转义，但是又找不到应该转义成的字符，我们需要的是一个完整的\d，所以斜杠成双。</p>
+<table>
+<thead>
+<tr>
+<th>*</th>
+<th>匹配前一个字符0或无数次，即可有可无</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>匹配前一个字符1或无数次，即至少有一次</td>
+</tr>
+<tr>
+<td>？</td>
+<td>匹配前一个字符1或0次，即不会多于一次</td>
+</tr>
+<tr>
+<td>{m}</td>
+<td>匹配前一个字符m次</td>
+</tr>
+<tr>
+<td>{m,}</td>
+<td>匹配前一个字符至少m次</td>
+</tr>
+<tr>
+<td>{m,n}</td>
+<td>匹配前一个字符m到n次</td>
+</tr>
+</tbody></table>
+<h4 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h4><p>long类型 仅仅是返回值类型 System.currentTimeMillis(),  1970年到现在的毫秒数</p>
+<p>Data类型  日期 桥梁  由于千年虫事件 基本上不使用  被用来进行long类型和Calendar类型的数据转换以及时间的展示</p>
+<p>Calendar类型  日历 日期的运算 属于抽象类，使用它的子类（GregorianGalendar）进行实例化，或者使用Calendar中的getInstance()方法  子类gregorianCalendar</p>
+<p>从字符串转换为时间类型  DateFormat 抽象类，子类simpleDateFormat</p>
+<p>格式化 date–》string</p>
+<p>解析 string—》date</p>
+<h4 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h4><p>​    Collection 接口</p>
+<p>add，remove，size，contains</p>
+<p>addAll,  合并不会去重</p>
+<p>removeAll, 去重交集</p>
+<p>retainAll  得到交集</p>
+<p>根据类型的equals和hashcode进行判断</p>
+<h3 id="List接口-默认为集合-（有序、重复）"><a href="#List接口-默认为集合-（有序、重复）" class="headerlink" title="List接口 ===默认为集合  （有序、重复）"></a>List接口 ===默认为集合  （有序、重复）</h3><p>List允许出现重复元素，线性方式的有序存储，通过索引来访问集合中的指定元素</p>
+<h5 id="如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"><a href="#如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。" class="headerlink" title="*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。"></a>*如果list是Integer泛型的话，如果使用remove方法，这里必须要理解的是：如果不需要自动装箱就能调用方法的话，就不会进行自动装箱。</h5><p>ArrayList在操作指定下标的任意元素上面，速度比较快。(查找上和指定下标操作的操作上速度比较快)。</p>
+<p>LinkedList底层是双向链表，所以在操作首尾元素的操作上速度比较快。</p>
+<p>vector自从ArrayList出现以后，就不再使用了</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>相当于把所有的集合元素按照他们指定的顺序排放在一个类似于线性表的集合中。</p>
+<p>使用集合对象调用iterator方法，获取iterator对象，如果有泛型，iterator也可以使用相应的泛型。</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>为了将运行时异常转换为编译时异常（深层次）</p>
+<p>泛型不存在继承关系</p>
+<h3 id="set接口"><a href="#set接口" class="headerlink" title="set接口"></a>set接口</h3><p>set接口中的元素无序，并且存入的元素不重复出现。</p>
+<p>HashSet</p>
+<p>​    无序且不重复、重写hashcode和equals方法</p>
+<p>LinkedHashSet</p>
+<p>​        有序</p>
+<p>TreeSet(实现了set和sortset)</p>
+<p>​     具有自然排序功能的类</p>
+<p>​    可以自定义排序</p>
+<p>​    不重复，不能放null</p>
+<p>​    因为TreeSet这个类需要吧里面的元素进行统一类型来比较，所以会配套使用泛型</p>
+<p>​    TreeSet对自定义数据类型进行排序的话，需要两个前提</p>
+<p>​                实现comparable接口</p>
+<p>​                有具体的排序方法</p>
+<h3 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h3><p>在java中有两个常用的接口，分别是Comparator接口和Comparable接口</p>
+<p>Comparator接口</p>
+<p>​    临时  重写 compare方法 两个参数</p>
+<p>​    经常在Arrays.sort以及Collections.sort里面来使用</p>
+<p>​    不能在TreeSet中使用</p>
+<p>​    使用内名内部类</p>
+<p>Comparable接口</p>
+<p>​    持久 重写 compareTo方法  一个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 都返回0的话，就会输出一个元素</span><br><span class="line">&#x2F;&#x2F; 返回正数时，代表该属性值的升序--&gt;本身属性-参数属性</span><br><span class="line">&#x2F;&#x2F; 返回负数时，代表该属性值的降序--&gt;参数属性-本身属性</span><br></pre></td></tr></table></figure>
+
+<h3 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h3><p> 等同于set的定义，建唯一不重复。键值对</p>
+<p>​    键 无序、无下标、不允许重复</p>
+<p>​    值 无序、无下标、允许重复</p>
+<p>HashMap 不能保证顺序，键采用自定义类型时，就要重写hashCode和equals方法</p>
+<p>LinkedHashMap  多了排序的功能</p>
+<p>TreeSet 自然排序且键不重复，可以采用自定义比较。</p>
+<p>HashMap与Hashtable的关系    ArrayList和vector的关系</p>
+<h3 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h3><p>​    编写错误不属于异常（需要try catch的才是编译型异常）</p>
+<p>​    printStackTrace() 打印异常的详细信息。包含了异常的类型，异常的原因，异常出现的位置</p>
+<p>​    getMessage() 获取异常的原因</p>
+<p>​    toString() 获取异常的类型和异常描述信息</p>
+<p>异常处理方式</p>
+<p>​    try  catch  finally   不加catch的话会结束程序的执行</p>
+<p>​    throw 后面跟异常对象  并且结束当前方法的执行 </p>
+<p>​    throw 后面如果接运行时环境，一旦改代码执行，那么程序会停止，如果后面是检查时异常，就会要求你处理异常，程序不会停止。</p>
+<p>​    如果throw后面跟的是一个编译时异常，jvm就会要求你必须处理此异常</p>
+<p>​    throws 放在方法结构尾部，用来告诉方法的调用者，这个方法有异常。</p>
+<p>​    Exception 和 继承Exception类的子类 属于编译期异常（除了RuntimeException 和 它的子类）</p>
+<p>​    RuntimeException和继承 了RuntimeException的子类</p>
+<p>​    自定义异常就是继承Exception或RuntimeException</p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>​    通过字节码对象获取，把类的各个组成部分（属性，构造函数和方法）给获取到</p>
+<p>​    能干什么？</p>
+<p>​    获取类的相关信息，动态调用方法，动态调用属性</p>
+<p>Class类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">getName  forName  newInstance</span><br><span class="line"></span><br><span class="line">   getField(String)  getDeclaredField(String) getFields getDeclaredFields</span><br><span class="line"></span><br><span class="line">getMethod(String name,Class... &lt;?&gt; parameterType)   getDeclaredField getMethods   getDeclaredFields</span><br><span class="line"></span><br><span class="line">getConstructor(Class... &lt;?&gt; parameterType)  getDeclaredField  getConstructors  getDeclaredFields</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Field类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get(Object o); <span class="comment">// 返回一个Object 获取该对象的相对应的属性</span></span><br><span class="line">set(Object o, 值) <span class="comment">// 修改该对象的值</span></span><br><span class="line"><span class="comment">// NoSuchFieldException 获取非公有属性  解决 getDeclaredField</span></span><br><span class="line"><span class="comment">// IllegalAccessException 非法访问  解决  使用之前赋予权限  setAccessible(true)</span></span><br></pre></td></tr></table></figure>
+
+<p>Method类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get(Object,Class...&lt;?&gt; ParameterType ) <span class="comment">// ParameterType 是类型，不是具体的值</span></span><br><span class="line">invoke(Object o , Object... Parameter) <span class="comment">// Parameter为具体的值</span></span><br><span class="line"><span class="comment">// NoSuchFieldException 获取非公有属性  解决 getDeclaredMethod</span></span><br><span class="line"><span class="comment">// IllegalAccessException 非法访问  解决  使用之前赋予权限  setAccessible(true)</span></span><br></pre></td></tr></table></figure>
+
+<p>Constructor类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">newInstance <span class="comment">// 创建一个新对象</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="工厂设计模式"><a href="#工厂设计模式" class="headerlink" title="工厂设计模式"></a>工厂设计模式</h3><p>这个创建模式让我们在创建对象时不会暴露创建逻辑，而是通过使用一个共同的接口来完成对象的创建</p>
+<p>简单工厂、工厂方法、抽象工厂</p>
+<p>优点：</p>
+<p>​    调用者想创建一个对象，只需要知道其名称，</p>
+<p>​    拓展性强，想增加产品，只要扩展产品类</p>
+<p>​    屏蔽产品的具体实现，无需关心内部实现</p>
+<p>​    面向接口编程</p>
+<h3 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h3><h5 id="File类-（不能读-写文件内容，只能操作文件或文件夹的属性）文件或目录路径的抽象表现形式"><a href="#File类-（不能读-写文件内容，只能操作文件或文件夹的属性）文件或目录路径的抽象表现形式" class="headerlink" title="File类 （不能读/写文件内容，只能操作文件或文件夹的属性）文件或目录路径的抽象表现形式"></a>File类 （不能读/写文件内容，只能操作文件或文件夹的属性）文件或目录路径的抽象表现形式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">exist() &#x2F;&#x2F; 是否存在</span><br><span class="line">createNewFile() &#x2F;&#x2F; 创建新文件  eg\创建文件的目录必须存在</span><br><span class="line">isHidden()&#x2F;&#x2F; 判断文件是否隐藏</span><br><span class="line">isFile()&#x2F;&#x2F; 判断是否为普通的文件</span><br><span class="line">length() &#x2F;&#x2F; 文件的长度</span><br><span class="line">isDirectory()&#x2F;&#x2F;是否为文件夹</span><br><span class="line">mkdir()&#x2F;&#x2F;创建一个文件夹</span><br><span class="line">mkdirs()&#x2F;&#x2F;创建层级文件夹</span><br><span class="line">renameTo(File dest) &#x2F;&#x2F; 更改文件的名字</span><br><span class="line">delete() &#x2F;&#x2F; 删除文件         eg、如果删除文件夹，文件夹下面不能有文件</span><br><span class="line">listFiles() &#x2F;&#x2F; 列出指定路径下的所有文件</span><br><span class="line">getAbsolutePath() &#x2F;&#x2F;获取绝对路径</span><br><span class="line">getCanonicalPath() &#x2F;&#x2F; 获取规范形式 建议使用</span><br><span class="line">getName()  &#x2F;&#x2F; 只有文件名</span><br><span class="line">getPath()  &#x2F;&#x2F; 路径名字</span><br><span class="line">listFile(FileFilter filter)</span><br></pre></td></tr></table></figure>
+
+<h3 id="流对象"><a href="#流对象" class="headerlink" title="流对象"></a>流对象</h3><p>字节流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">InputStream  实现了Closeable接口，可以被关闭</span><br><span class="line">    FileInputStream</span><br><span class="line">    FilterInputStream  <span class="comment">// 相当于私人订制</span></span><br><span class="line">    	BufferedInputStream</span><br><span class="line">    	DataInputStream <span class="comment">// 专门处理基本数据类型的流</span></span><br><span class="line">    	PushbakInputStream</span><br><span class="line">    ObjectInputStream</span><br><span class="line">OutputStream  实现了closeable，Flushable接口</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>InputStream</p>
+<ul>
+<li>available() 返回长度</li>
+</ul>
+<p>FileOutputStream</p>
+<ul>
+<li>read()  已经读完的情况下在读是-1  返回的是游标的位置</li>
+</ul>
+<p>字符流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Reader</span><br><span class="line">    BufferedReader 常用</span><br><span class="line">    InputStreamReader  </span><br><span class="line">    	FileReader</span><br><span class="line">Writer</span><br><span class="line">    BufferedWriter 常用</span><br><span class="line">    OutputStreamWriter</span><br><span class="line">    	FileWriter</span><br></pre></td></tr></table></figure>
+
+<p>BufferedReader</p>
+<ul>
+<li>Read      文件末尾返回null</li>
+</ul>
+<p>BufferedWriter</p>
+<ul>
+<li>write</li>
+<li>append</li>
+<li>newline   另起一行</li>
+</ul>
+<p>PrinterWriter</p>
+<ul>
+<li>PrinterWriter（String str）</li>
+</ul>
+<h3 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h3><p>ObjectOutputStream和ObjectInputStream</p>
+<p>一个类要实现序列化，它本身和它的属性必须都实现序列化。对父类无要求</p>
+<p>serialVersionUID 使用来标识类的，来判断是否是同一个类，不写的话会自动计算生成</p>
+<p>不想属性进行序列化解决方法</p>
+<ul>
+<li>加上static（类资源不会进行序列化）</li>
+<li>加上transient修饰词(当类实现的是Externalizable接口时，可以通过重写序列化和反序列化的方法指定某些属性进行序列化和反序列化，这时transient关键字失效)</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>一个线程可以创建和撤销另一个线程</p>
+<p>线程基本上不拥有系统资源</p>
+<p>线程之间交替工作，被称为多线程。</p>
+<p>线程的组成</p>
+<ul>
+<li>cpu时间片</li>
+<li>运行数据（栈内存、堆内存）</li>
+<li>线程的业务逻辑代码</li>
+</ul>
+<p>同步（并发）多个线程按照一定的顺序逐个进行执行。</p>
+<p>异步（并行）多个线程一起不按顺序的执行。</p>
+<h4 id="1、多线程的创建"><a href="#1、多线程的创建" class="headerlink" title="1、多线程的创建"></a>1、多线程的创建</h4><p>Thread类 实现run方法，调用start方法（如果执行run方法，不会开启一个新的线程）</p>
+<ul>
+<li>多个线程分别完成自己的任务</li>
+</ul>
+<p>Runnable接口 实现run方法，但是还需要Threand类的start方法</p>
+<ul>
+<li>多个线程共同完成一个任务</li>
+<li>线程池只能放入实现Runable或Callable类线程，不能放入Thread子类</li>
+</ul>
+<p>指定多线程的名字     setName方法</p>
+<h4 id="多线程的状态管理（生命周期）"><a href="#多线程的状态管理（生命周期）" class="headerlink" title="多线程的状态管理（生命周期）"></a>多线程的状态管理（生命周期）</h4><p>New状态：多线程被创建出来，还没有调用start方法之前，属于这种状态。</p>
+<p>Ready状态：调用了start方法，此时处于多个线程在争夺cpu使用权。</p>
+<p>Runnable状态：当某个多线程抢夺到了cpu的使用权，并且开始运行他的业务逻辑的时候</p>
+<p>Block状态：当多线程由于外部原因导致它无法继续执行业务逻辑的时候，</p>
+<ul>
+<li>a、锁阻塞</li>
+<li>b、指定时长的等待</li>
+<li>c、不指定时长的等待</li>
+</ul>
+<p>Terminated状态：当多线程业务逻辑执行完毕，属于这种状态，一旦进入这种状态，线程对象就无法调用方法了。</p>
+<h4 id="线程的常用方法"><a href="#线程的常用方法" class="headerlink" title="线程的常用方法"></a>线程的常用方法</h4><ul>
+<li><p>静态方法</p>
+<ul>
+<li>currentThread() 获取当前的线程对象</li>
+<li>sleep() 让当前线程休眠（注意 因为是静态方法，所以不是按对象执行，而是看当前执行方法的线程） 如 在 t1 t2 线程，在t2中调用t1.sleep() ，t2休眠而不是t1休眠。</li>
+<li>activeCount（） 获取当前线程组的活动线程数量。</li>
+<li>yield（） 暂停当前线程的运行，让其进入就绪状态和其他的就绪线程抢夺资源。</li>
+</ul>
+</li>
+<li><p>线程相关信息的方法</p>
+<ul>
+<li>getName()/setName() 线程的名字</li>
+<li>getId 线程的id标识符</li>
+<li>getPriority()/setPriority()   线程的优先级</li>
+<li>getState(）线程的状态</li>
+<li>setDaemon(boolean on)  标记为守护线程或用户线程</li>
+</ul>
+</li>
+<li><p>守护线程</p>
+<ul>
+<li>守护线程，我们也称为后台线程或者是用户线程。</li>
+<li>一旦你设置了某个线程为守护线程的话，那么该线程会等待其他线程都结束，它就会自动结束，所以是守护线程我们一般不会设置其有效时间，会让它一直有效，典型的守护线程就是垃圾回收线程</li>
+<li>设置一个线程为守护线程要在start方法调用之前来设置。</li>
+</ul>
+</li>
+<li><p>线程判断的方法</p>
+<ul>
+<li>isAlive()</li>
+<li>isDaemon()</li>
+<li>isInterupted()</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>join（）等待该线程终止再开始其他线程 放在start之后调用才有效</li>
+</ul>
+</li>
+</ul>
+<h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><p>多个线程同时使用同一个共享资源所导致的。</p>
+<p>解决方法 锁（synchronized）</p>
+<ul>
+<li>对资源进行加锁</li>
+</ul>
+<p>互斥锁的使用方式</p>
+<ul>
+<li>隐式锁<ul>
+<li>代码块上锁</li>
+<li>方法上锁</li>
+</ul>
+</li>
+<li>显式锁<ul>
+<li>lock上锁（jdk1.5之后）</li>
+</ul>
+</li>
+</ul>
+<p>代码块加锁</p>
+<p>​    synchronized关键字可以用于方法的某个区域中，</p>
+<p>​    synchronized（同步锁）{</p>
+<p>​        需要同步操作的代码</p>
+<p>​    }</p>
+<p>​    同步锁的解释</p>
+<p>​    对象的同步锁只是一个概念，可以想象为在对象上标记了一个锁，同步锁的要求：</p>
+<p>​    1、所对象可以是任意类型，我们一般直接使用Object对象</p>
+<p>​    2、保证这些线程对象使用的是同一把锁。</p>
+<p>​    注意：</p>
+<p>​    1、在任意时候，最多允许一个线程拥有同步锁，谁拿到锁就进入代码，其余代码只能在外边等着（Blocked）</p>
+<p>​    2、对于非static方法，同步锁就是this。对于static方法，我们使用当前方法所在类的字节码对象。</p>
+<p>​    ps：sleep不释放锁资源，wait释放锁资源。</p>
+<p>​    可以使用lock接口，ReentrantLock是lock的实现类</p>
+<p>​    方法</p>
+<p>​        lock()</p>
+<p>​        unlock()</p>
+<h4 id="多线程唤醒的三种方式"><a href="#多线程唤醒的三种方式" class="headerlink" title="多线程唤醒的三种方式"></a>多线程唤醒的三种方式</h4><p>​    interrupt()    sleep()</p>
+<p>​    notify()</p>
+<p>​    notifyAll()</p>
+<h4 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h4><p>​        让多个线程之间可以进行进行同一件事情，需要线程之间进行协调。</p>
+<p>​        wait和notify函数必须在同步代码块后者同步函数中使用。</p>
+<h4 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h4><p>使用：</p>
+<p>​    1、使用线程池的工具类Executors里面所提供的静态方法newFixedThreadPool（int nThreads）来构建一个指定线程数量的线程池对象。</p>
+<p>​    2、创建一个Runnable的子类，然后在run方法中写明你的任务逻辑代码。</p>
+<p>​    3、通过创建出来的ExecutorServices对象中的submit方法来执行你创建的Runnable子类。</p>
+<p>​    4、如果你不再使用线程池了，可以用shutDown（）关闭它。</p>
+<h3 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h3><p>​    1、lambda表达式</p>
+<p>​    2、方法引用</p>
+<p>​        有现成的方法使用，就是用现成的方法。（相当于对lambda表达式的进一步优化）</p>
+<p>​        testInterface2(System.out::println)</p>
+<p>​        </p>
+<p>​    3、函数式接口</p>
+<p>​        就是符合lambda表达式的接口，确保接口中有且只有一个抽象方法</p>
+<p>​        在接口上使用@FunctionalInterface注解,如果是函数式接口，则编译通过，否则不通过。</p>
+<p>​        可以作为参数和返回类型。</p>
+<p>​        四种新常用的函数式接口（1.8）</p>
+<p>​            Supplier接口  提供一个数据</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Supplier&lt;T&gt;:包含一个无参的方法，用来获取一个泛型参数指定类型的对象数据。</span><br><span class="line">Tget():获得结果，不需要参数，它会按照某种实现逻辑（由 Lambda表达式实现返回一个数据</span><br><span class="line">Supplier&lt;T&gt;接口也被称为生产型接口，如果我们指定了接口的泛型是什么类型，那么接口中的get方法就会</span><br><span class="line">生产什么类型的数据供我们使用</span><br></pre></td></tr></table></figure>
+
+<p>​            Consumer接口    </p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;T&gt;:也被称为消费型接口，该接口正好与 Supplier接口相反，它不是生产一个数据，而是消费一</span><br><span class="line">个数据，其数据类型由泛型决定。</span><br><span class="line">void accept(T t):对给定的参数执行此操作。</span><br><span class="line">default Consumer&lt;T&gt; andthen( Consumer after):返回一个组合的 Consumer,依次执行此操作，然后执行 afterf操作。</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​            Predicate接口</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Predicate&lt;T&gt;:通常用于判断参数是否满足指定的条件</span><br><span class="line">boolean test(Tt):对给定的参数进行判断(判断逻辑由 Lambda表达式实现)，返回一个布尔值</span><br><span class="line">default Predicates&gt; negate（）:返回一个逻辑的否定，对应逻辑非</span><br><span class="line">default Predicate&lt;T&gt;and( Predicate other):返回一个组合判断，对应短路与</span><br><span class="line">default Predicate&lt;T&gt;or( Predicate other):返回一个组合判断，对应短路或</span><br></pre></td></tr></table></figure>
+
+
+
+<p>​            Function接口</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Function&lt;T,R&gt;:接口通常用于对参数进行处理，转換(处理逻辑由 Lambda表达式实现)，然后返回一个新的值</span><br><span class="line">Apply(Tt):将此函数应用于给定的参数</span><br><span class="line">default&lt;V&gt; Function andthen( Function after):返回一个组合函数，首先将该函数应用于输入，然后将 after</span><br><span class="line">函数应用于结果</span><br></pre></td></tr></table></figure>
+
+<h3 id="stream流"><a href="#stream流" class="headerlink" title="stream流"></a>stream流</h3><p>流可以理解为是一种用来处理数据容器的东西。可以和lambda表达式相结合一起进行操作。</p>
+<p>流的生成</p>
+<p>​    1、Collection接口下的子类</p>
+<p>​        list.stream()    set.stream()</p>
+<p>​    2、Map接口下的子类</p>
+<p>​        根据需求来进行键、值或者Entry对象的转换为stream流</p>
+<p>​        map.keySet().stream()    map.values().stream()    map.entrySet().stream()</p>
+<p>​    3、数组</p>
+<p>​        直接调用Stream类的静态方法of</p>
+<p>​        Stream.of(strArray)</p>
+<p>​    4、结束流</p>
+<p>​        count    forEach</p>
+<p>​    5、Stream转换到Collection</p>
+<p>​        R collect(Collector collector)</p>
+<p>​        Collectors工具类</p>
+<p>​            public static <T> Collector toList() : 把元素收集到list集合中</p>
+<p>​            public static <T> Collector toSet() : 把元素收集到set集合中            </p>
+<p>​            public static  Collector toMap(Function keyMapper,Function valueMapper) : 把元素收集到map集合中</p>
+<hr>
+<p>东软</p>
+<p>操作数栈的概念</p>
+<p>jdbc的连接步骤(引入jar包，mysql connector/J , lombok  @Data,  )</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、选择数据库的种类  Class.forName(&quot;com.mysql.jdbc.Driver&quot;)</span><br><span class="line">2、创建连接，数据库地址，用户名、地址 Connnetion conn &#x3D; DriverManager.getConnnection(&quot;jdbc:mysql:&#x2F;&#x2F;192.168.80.131:3306&#x2F;db1?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf8&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line">3、选择要操作的数据库</span><br><span class="line">上一步已经写好了</span><br><span class="line">4、写sql语句</span><br><span class="line">con.createStatement(String sql) &#x2F;&#x2F; 少数 无预编译</span><br><span class="line">PrepareStatement pstmt &#x3D; con.prepareStataement(String sql) &#x2F;&#x2F; 多数 有预编译</span><br><span class="line">5、执行sql语句</span><br><span class="line">ResultSet rs &#x3D;  pstmt.executeQuery();</span><br><span class="line">6、处理结果集</span><br><span class="line">while(rs.next())&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>泛型逆向推到必须要写<T></p>
+<p>单继承多实现</p>
+<p>抽象类中可以有构造方法，接口中不可以有构造方法。</p>
+<p>抽象类中可以有抽象方法和非抽象方法，接口中可以有非抽象方法（jdk8及以后）</p>
+<p>字符流字节流之间转换： inputStreamReader       bufferedReader</p>
+<p>远程调用 一个机器上的controller层调用另一台机器上的service层 通过url调用</p>
+<p>跨语言无法传输字节流，可以使用json或xml格式</p>
+<p>分布式：将程序分为一个个的模块项目。（简单来说就是合力做一件事）</p>
+<p>消息中间件：类似于数组。英文全称“Message Queue”，简称MQ。</p>
+<p>事务：事务是应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤            消。也就是事务具有原子性，一个事务中的一系列的操作要么全部成功，要么一个都不做。</p>
+<p>事务的四大特性：ACID,原子性（Atomicity）,一致性（correspondence），隔离性（Isolation）,持久性（durability）。</p>
+<p>​    （1）原子性：整个事务中的所有操作，要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。<br>​      （2）一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏。<br>​      （3）隔离性：隔离状态执行事务，使它们好像是系统在给定时间内执行的唯一操作。如果有两个事务，运行在相同的时间内，执行 相同的功能，事务的隔离性将确保每一事务在系统中认为只有该事务在使用系统。这种属性有时称为串行化，为了防止事务操作间的混淆，  必须串行化或序列化请 求，使得在同一时间仅有一个请求用于同一数据。<br>​      （4）持久性：在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。</p>
+<p>进程：正在运行的程序</p>
+<p>线程：是操作系统能够进行运算调度的最小单位，是进程中的实际运作单位。</p>
+<p>javaee是通讯框架</p>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>私有化构造方法</p>
+<p>​    饥饿式：先构造一个static的对象</p>
+<p>​    懒汉式： 先设置一个为null的static的变量，等调用对象的时候再进行生成。  因为是单实例多线程的调用需要加锁。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/sy%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,78 +1804,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-16 14:02:00" itemprop="dateCreated datePublished" datetime="2020-11-16T14:02:00+08:00">2020-11-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1585,7 +1873,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
