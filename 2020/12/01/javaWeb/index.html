@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="javaweb web服务器 （tomcat）用来接收客户发来的请求和响应客户请求  目录结构  bin 存放启动和停止等命令和且其他脚本文件。  config 存放服务器的配置文件  lib 存放服务器的jar包  logs 存放服务器的日志文件  webapps web应用的部署目录  temp  存放tomcat的临时文件  work    tomcat的工作目录 1234567891011">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaweb">
+<meta property="og:url" content="http://example.com/2020/12/01/javaWeb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="javaweb web服务器 （tomcat）用来接收客户发来的请求和响应客户请求  目录结构  bin 存放启动和停止等命令和且其他脚本文件。  config 存放服务器的配置文件  lib 存放服务器的jar包  logs 存放服务器的日志文件  webapps web应用的部署目录  temp  存放tomcat的临时文件  work    tomcat的工作目录 1234567891011">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-01T03:26:32.000Z">
+<meta property="article:modified_time" content="2021-05-27T05:48:31.528Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/12/01/javaWeb/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>javaweb | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/01/javaWeb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javaweb
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-01 11:26:32" itemprop="dateCreated datePublished" datetime="2020-12-01T11:26:32+08:00">2020-12-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-27 13:48:31" itemprop="dateModified" datetime="2021-05-27T13:48:31+08:00">2021-05-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>javaweb</p>
+<p>web服务器 （tomcat）用来接收客户发来的请求和响应客户请求</p>
+<ul>
+<li><p>目录结构</p>
+</li>
+<li><pre><code class="java">bin 存放启动和停止等命令和且其他脚本文件。
+
+config 存放服务器的配置文件
+
+lib 存放服务器的jar包
+
+logs 存放服务器的日志文件
+
+webapps web应用的部署目录
+
+temp  存放tomcat的临时文件
+
+work    tomcat的工作目录
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编辑器配置好tomcat运行环境</span><br><span class="line"></span><br><span class="line">添加好一个server实例</span><br><span class="line"></span><br><span class="line">servlet  （处理请求和发起响应，为了实现动态页面而衍生出来的）</span><br><span class="line"></span><br><span class="line">servlet 生命周期</span><br><span class="line"></span><br><span class="line">- 加载类</span><br><span class="line">- 初始化</span><br><span class="line">- init</span><br><span class="line">- service</span><br><span class="line">- destory</span><br><span class="line"></span><br><span class="line">servlet与Tomcat之间的关系</span><br><span class="line"></span><br><span class="line">- tomcat是web应用服务器，是一个servlet&#x2F;Jsp容器，负责把请求传递给Servlet，并将Servlet的响应传递给客户。</span><br><span class="line">- servlet是服务器上的一个组件，</span><br><span class="line"></span><br><span class="line">在web.xml中定义servlet与访问网址之间的匹配关系</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;xml</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;MyServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;test01.servlet&lt;&#x2F;servlet-class&gt;</span><br><span class="line">&lt;&#x2F;servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyServlet&lt;&#x2F;servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;&#x2F;hello&lt;&#x2F;url-pattern&gt;</span><br><span class="line">&lt;&#x2F;servlet-mapping&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>可以在web.xml中配置load-on-startup=1 服务器启动时初始化servlet对象</p>
+<p>servlet初始化参数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Myservlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>test01.MyServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>haha<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>这是Servlet中的初始参数<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>getInitParameterNames()   获取在servlet中的所有初始化参数的名字</p>
+<p>重定向</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(<span class="string">&quot;重定向的地址&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>转发</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getDispatcher(<span class="string">&quot;转发的地址&quot;</span>).forWard(request,response)</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSP页面（java-server-pages）本质也是一个servlet"><a href="#JSP页面（java-server-pages）本质也是一个servlet" class="headerlink" title="JSP页面（java server pages）本质也是一个servlet"></a>JSP页面（java server pages）本质也是一个servlet</h3><p> html中写jsp标签，jsp标签中写java代码 </p>
+<p>&lt;% java代码%&gt;  &lt;%= java变量%&gt; </p>
+<p>html，java代码块，jsp标签组成</p>
+<p>JSP中的内置对象</p>
+<ul>
+<li>out(jspWriter) ：相当于respons.getWriter()获取的对象，用于在页面中显示信息。</li>
+<li>config （servletConfig）:   servlet 中的 servletConfig对象。</li>
+<li>page (Object) :   对应当前的servlet对象，实际上就是this</li>
+<li>pageContext (PageContext) :   当前页面的上下文，也是一个域对象。</li>
+<li>exception (Trowable):   错误页面中的异常对象</li>
+<li>request （HttpServletRequest）:   HttpServletRequest对象</li>
+<li>response  (HttpServletResponse)  :   HttpServletResponse对象</li>
+<li>application (ServletContext) :   ServletContext对象</li>
+<li>session（HttpSession）:   HttpSession对象</li>
+</ul>
+<p>EL表达式  自动类型转换</p>
+<p>​    EL是jsp内置的表达式语言，用以访问页面的上下文以及不同作用域中的对象 ，取得对象属性的值，或执行简单的运算或判断操作。</p>
+<p>​    EL表达式用于代替JSP表达式(&lt;%= %&gt;)在页面中做输出操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EL表达式语法</span><br><span class="line">    $&#123; EL表达式（可完成取值，简单的运算，简单的判断）&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    EL取值的四个域:<br>​    pageScope<br>​    requestScope<br>​    sessionScope<br>​    applicationScope</p>
+<p>EL表达式与JSTL的比较</p>
+<ul>
+<li>EL表达式为了简化jsp中传统的取值操作。 ${requst.pwd}   &lt;%= request.getAttribute(“pwd”)%&gt;    </li>
+<li>JSTL是 （java server pages standard Tag library）</li>
+<li>EL表达式多用于取值操作，而JSTL则可以方便我们对集合进行遍历，对数据进行判断等操作</li>
+</ul>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>avaScript是一种采用事件驱动的脚本语言,它不需要经过Web服务器就可以对用户的输入做出响应</p>
+<p>BOM</p>
+<p>①Borwser Object Model 浏览器对象模型<br>②浏览器对象模型提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。BOM由多个对象组成，其中代表浏览器窗口的Window对象是BOM的顶层对象，其他对象都是该对象的子对象<br>③常用的对象(window的子对象)<br>document history location screen navigator frames</p>
+<p>DOM</p>
+<p>①Document Object Model 文档对象模型<br>②document对象:  window对象的一个属性，代表当前HTML文档，包含了整个文档的树形结构。获 取document对象的本质方法是：window.document，而“window.”可以省略。</p>
+<p>document.getElementById(“id值”)</p>
+<p>document.getElementsByTagName(“标签名”)</p>
+<p>document.getElementsByName(“name值”)</p>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><p>XMLHttpRequest对象是AJAX中非常重要的对象，所有的AJAX操作都是基于该对象的。</p>
+<p>Xhr对象的方法</p>
+<ul>
+<li>①open(method,url,async)      open()用于设置请求的基本信息，接收三个参数<ul>
+<li>①method<br>请求的方法：get或post<br>接收一个字符串</li>
+<li>②url<br>请求的地址，接收一个字符串</li>
+<li>③Assync<br>发送的请求是否为异步请求，接收一个布尔值。<br>true 是异步请求<br>false 不是异步请求（同步请求）</li>
+</ul>
+</li>
+<li>②send(string)<br>send()用于将请求发送给服务器，可以接收一个参数<ul>
+<li>①string参数<br>该参数只在发送post请求时需要。<br>string参数用于设置请求体</li>
+</ul>
+</li>
+<li>③setRequestHeader(header,value)<br>用于设置请求头<ul>
+<li>①header参数<br>字符串类型，要设置的请求头的名字</li>
+<li>②value参数<br>字符串类型，要设置的请求头的值</li>
+</ul>
+</li>
+</ul>
+<h3 id="XMLHttpRequest对象的属性"><a href="#XMLHttpRequest对象的属性" class="headerlink" title="XMLHttpRequest对象的属性"></a>XMLHttpRequest对象的属性</h3><p>readyState<br>①描述XMLHttpRequest的状态<br>②一共有五种状态分别对应了五个数字：<br>0 ：请求尚未初始化，open()尚未被调用<br>1 ：服务器连接已建立，send()尚未被调用<br>2 ：请求已接收，服务器尚未响应<br>3 ：请求已处理，正在接收服务器发送的响应<br>4 ：请求已处理完毕，且响应已就绪。<br>2)status<br>①请求的响应码<br>200 响应成功<br>404 页面为找到<br>500 服务器内部错误<br>3)onreadystatechange<br>①该属性需要指向一个函数<br>②该函数会在readyState属性发生改变时被调用<br>4)responseText<br>①获得字符串形式的响应数据。<br>5)responseXML（用的比较少）<br>①获得 XML 形式的响应数据。</p>
+<h3 id="使用JQuery框架来发送异步请求"><a href="#使用JQuery框架来发送异步请求" class="headerlink" title="使用JQuery框架来发送异步请求"></a>使用JQuery框架来发送异步请求</h3><ul>
+<li><p>JQuery是当前比较主流的 JavaScript 库，封装了很多预定义的对象和实现函数，</p>
+</li>
+<li><p>JQuery的对象的本质就是dom对象的数组/集合</p>
+</li>
+<li><p>JQuery对象与dom对象的相互转换<br>JS转JQuery:  var jObj = $(dObj);<br>JQuery转JS:  var dObj = jObj[0] 或者 var dObj = jObj.get(0)</p>
+</li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a><strong>Cookie</strong></h3><p>HTTP是无状态协议，服务器不能记录浏览器的访问状态，也就是说服务器不能区分中两次请求是否由一个客户端发出的。假如在我们进行网购时，买了一条裤子，又买了一个手机。由于http协议是无状态的，如果不通过其他手段，服务器是不能知道用户到底买了什么。而Cookie就是解决方案之一。</p>
+<p><strong>Cookie实际上就是服务器保存在浏览器上的一段信息</strong>。浏览器有了Cookie之后，每次向服务器发送请求时都会同时将该信息发送给服务器，服务器收到请求后，就可以根据该信息处理请求。</p>
+<p>创建cookie</p>
+<p>​        Cookie mycookie = new Cookie(‘key’,’value’);</p>
+<p>​        mycookie.setPath(‘设置cookie的路径’);</p>
+<p>​        mycookie.setMaxAge(‘设置cookie的时间’);</p>
+<p>​        request.addCookie(mycookie);</p>
+<p>读取cookie</p>
+<p>​        Cookie[] cookie = request.getCookie();</p>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a><strong>Session</strong></h3><p>​    使用cookie是有局限的，如果cookie很多会增加数据传输量，浏览器也会对cookie的数量有限制，于是session出现。</p>
+<p>​    Session的作用就是在<strong>服务器端</strong>保存一些用户的数据，然后传递给用户一个名字为JSESSIONID的Cookie，这个JESSIONID对应这个服务器中的一个Session对象，通过它就可以获取到保存用户信息的Session。</p>
+<ol>
+<li><p>Session的工作原理<br>①Session的创建时机是在request.getSession()方法第一次被调用时。<br>②Session被创建后，同时还会有一个名为JSESSIONID的Cookie被创建。<br>③这个Cookie的默认时效就是当前会话。<br>④简单来说，Session机制也是依赖于Cookie来实现的</p>
+</li>
+<li><p>使用</p>
+<p>HttpSession  session = request.getSession();</p>
+</li>
+<li><p>时效性</p>
+<p>可以在web.xml中进行设置 30分钟</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>30<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h3><p>​    因为session还是需要cookie实现的，如果cookie禁用，则session无法使用，所以我们需要一些备用的手段，如RUL重写。</p>
+<ol>
+<li><p>URL重写其实就是将JSESSIONID的值以固定格式附着在URL地址后面，以实现保持JSESSIONID，进而保持会话状态。这个固定格式是：URL;jsessionid=xxxxxxxxx</p>
+</li>
+<li><p>实现方式</p>
+<p>String url = “targetServlet”;</p>
+<p>String encodeURL = response.encodeURL(url)</p>
+<p>response.sendRedirect(encodeURL)</p>
+</li>
+</ol>
+<h2 id="主页面访问权限控制-过滤器-字符转码"><a href="#主页面访问权限控制-过滤器-字符转码" class="headerlink" title="主页面访问权限控制 (过滤器 字符转码)"></a>主页面访问权限控制 (过滤器 字符转码)</h2><ol>
+<li><p>对于WEB应用来说，<strong>过滤器是一个驻留在服务器中的WEB组件</strong>，他可以截取客户端和WEB资源之间的请求和响应信息。WEB资源可能包括Servlet、JSP、HTML页面等</p>
+</li>
+<li><p>当服务器收到特定的请求后，会先将请求交给过滤器，程序员可以在过滤器中对请求信息进行读取修改等操作，然后将请求信息再发送给目标资源。目标资源作出响应后，服务器会再次将响应转交给过滤器，在过滤器中同样可以对响应信息做一些操作，然后再将响应发送给服务器。</p>
+</li>
+<li><p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myFilter</span> <span class="title">implement</span> <span class="title">Filter</span></span>&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest arg0,Servlet response arg1,FilterChain arg2)</span> <span class="keyword">throws</span> IOException,ServletException </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig arg0)</span> <span class="keyword">throws</span> ServletException</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>loginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.atguigu.servlet.LoginFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>loginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="在线人数统计-监听器"><a href="#在线人数统计-监听器" class="headerlink" title="在线人数统计(监听器)"></a>在线人数统计(监听器)</h2><ol>
+<li>Listener用于监听JavaWeb程序中的事件。</li>
+<li>例如：ServletContext、HttpSession、ServletRequest的创建、修改和删除</li>
+<li>监听器的类型分为<br>①生命周期<br>②数据绑定</li>
+</ol>
+<h2 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h2><p>​    xml用来传输和存储数据，xml没有预定义标签，均为自定义标签。</p>
+<ol>
+<li>配置文件<br>JavaWeb中的web.xml<br>C3P0中的c3p0-config.xml</li>
+<li>数据交换格式<br>Ajax<br>WebService</li>
+<li>数据存储<br>保存关系型数据</li>
+</ol>
+<p>xml组成</p>
+<ol>
+<li>XML文档组成<br>①XML声明<br>version属性指定XML版本，固定值是1.0<br>encoding指定的字符集，是告诉解析器使用什么字符集进行解码，而编码是由文本 编辑器决定的<br>②CDATA区<br>当XML文档中需要写一些程序代码、SQL语句或其他不希望XML解析器进行解析 的内容时，就可以写在CDATA区中<br>XML解析器会将CDATA区中的内容原封不动的输出<br>CDATA区的定义格式：<![CDATA[…]]></li>
+<li>语法规则<br>①XML声明要么不写，要写就写在第一行，并且前面没有任何其他字符<br>②只能有一个根标签<br>③标签必须正确结束<br>④标签不能交叉嵌<br>⑤严格区分大小写<br>⑥属性必须有值，且必须加引号<br>⑦标签不能以数字开头<br>⑧注释不能嵌套</li>
+</ol>
+<h3 id="xml解析"><a href="#xml解析" class="headerlink" title="xml解析"></a>xml解析</h3><ol>
+<li><p>XML解析是指通过解析器读取XML文档，解释语法，并将文档转化成对象</p>
+</li>
+<li><p>常用的解析方式<br>DOM（Document Object Model）<br>SAX（Simple API for XML）</p>
+</li>
+<li><p>Dom4j解析示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SAXReader saxreader = <span class="keyword">new</span> SAXReader();</span><br><span class="line">Document document = saxreader.read(<span class="string">&quot;students.xml&quot;</span>)</span><br><span class="line">Element root = document.getRootElement();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ol>
+<li>AJAX一开始使用的时XML的数据格式，XML的数据格式非常简单清晰，容易编写，但是由于XML中包含了过多的标签，以及十分复杂的结构，解析起来也相对复杂，所以目前来讲，AJAX中已经几乎不使用XML来发送数据了。取而代之的是一项新的技术JSON。</li>
+<li>JSON是JavaScript Object Notation 的缩写，是JS提供的一种数据交换格式。</li>
+<li>JSON对象本质上就是一个JS对象，但是这个对象比较特殊，它可以直接转换为字符串，在不同语言中进行传递，通过工具又可以转换为其他语言中的对象。</li>
+</ol>
+<h3 id="JSON通过6种数据类型来表示"><a href="#JSON通过6种数据类型来表示" class="headerlink" title="JSON通过6种数据类型来表示"></a>JSON通过6种数据类型来表示</h3><ol>
+<li>字符串</li>
+</ol>
+<ul>
+<li>例子：”字符串”</li>
+<li>注意：不能使用单引号</li>
+</ul>
+<ol>
+<li>数字：</li>
+</ol>
+<ul>
+<li>例子：123.4</li>
+</ul>
+<ol>
+<li>布尔值：</li>
+</ol>
+<ul>
+<li>例子：true、false</li>
+</ul>
+<ol>
+<li>null值: </li>
+</ol>
+<ul>
+<li>例子：null</li>
+</ul>
+<ol>
+<li>对象</li>
+</ol>
+<ul>
+<li>例子：{“name”: ”sunwukong”, ”age”: 18}<br>6.数组</li>
+<li>例子：[1,”str”,true]</li>
+</ul>
+<h3 id="在JS中操作JSON"><a href="#在JS中操作JSON" class="headerlink" title="在JS中操作JSON"></a>在JS中操作JSON</h3><ol>
+<li>创建JSON对象</li>
+</ol>
+<ul>
+<li>var json = {“name1”: ”value1”,”name2”: ”value2” , “name3”: [1,”str”,true]};</li>
+<li>var json = [{“name1”: ”value1”},{“name2”: ”value2”}];</li>
+</ul>
+<ol>
+<li>JSON对象转换为JSON字符串</li>
+</ol>
+<ul>
+<li>JSON.stringify(JSON对象)</li>
+</ul>
+<ol>
+<li>JSON字符串转换为JSON对象</li>
+</ol>
+<ul>
+<li>JSON.parse(JSON字符串)</li>
+</ul>
+<h3 id="在Java中操作JSON"><a href="#在Java中操作JSON" class="headerlink" title="在Java中操作JSON"></a>在Java中操作JSON</h3><ol>
+<li><p>在Java中可以从文件中读取JSON字符串，也可以是客户端发送的JSON字符串，所以第一个问题，我们先来看如何将一个JSON字符串转换成一个Java对象。</p>
+</li>
+<li><p>首先解析JSON字符串我们需要导入第三方的工具，目前主流的解析JSON的工具大概有三种json-lib、jackson、gson。三种解析工具相比较json-lib的使用复杂，且效率较差。而Jackson和gson解析效率较高。使用简单，这里我们以gson为例讲解。</p>
+</li>
+<li><p>Gson是Google公司出品的解析JSON工具，使用简单，解析性能好。</p>
+</li>
+<li><p>Gson中解析JSON的核心是Gson的类，解析操作都是通过该类实例进行。</p>
+</li>
+<li><p>JSON字符串转换为对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String json = <span class="string">&quot;&#123;\&quot;name\&quot;: \&quot;张三\&quot;，\&quot;age\&quot;: 18&#125;&quot;</span>;</span><br><span class="line">Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">// 转换为集合</span></span><br><span class="line">Map&lt;String,Object&gt; stuMap = gson.fromJson(json,Map.class);</span><br><span class="line"><span class="comment">// 转换为类</span></span><br><span class="line">Student student = gson.fromJson(json,Student.class);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>6.对象转json</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Student stu = <span class="keyword">new</span> Student(<span class="string">&quot;李四&quot;</span>, <span class="number">23</span>);</span><br><span class="line">Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line"><span class="comment">//&#123;&quot;name&quot;: &quot;李四&quot;,&quot;age&quot;: 23&#125;</span></span><br><span class="line">String json = gson.toJson(stu);</span><br><span class="line">Map&lt;String , Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">map.put(“name”, “孙悟空”);</span><br><span class="line">map.put(“age”, <span class="number">30</span>);</span><br><span class="line"><span class="comment">//&#123;“age”: 30,“name”: “孙悟空”&#125;</span></span><br><span class="line">String json2 = gson.toJson(map);</span><br><span class="line"></span><br><span class="line">List&lt;Student&gt; list = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">list.add(<span class="keyword">new</span> Student(“八戒”, <span class="number">18</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Student(“沙僧”, <span class="number">28</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Student(“唐僧”, <span class="number">38</span>));</span><br><span class="line"><span class="comment">//[&#123;“name”: “八戒”,“age”: 18&#125;,&#123;“name”: “沙僧”,“age”: 28&#125;,</span></span><br><span class="line">&#123;“name”: “唐僧”,“age”: <span class="number">38</span>&#125;]</span><br><span class="line">String json3 = gson.toJson(list);</span><br><span class="line"><span class="comment">// 如果将一个数组格式的json字符串转换成java对象需要用到</span></span><br><span class="line"><span class="comment">//Gson提供的一个匿名内部类： TypeToken</span></span><br><span class="line">TypeToken tk= <span class="keyword">new</span> TypeToken&lt;List&lt;User&gt;&gt;()&#123;&#125;;</span><br><span class="line">List&lt;User&gt; list2 = gson.fromJson(json,tk.getType());</span><br><span class="line">System.out.println(list2.get(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p>dao层</p>
+<p>service层</p>
+<p>web层</p>
+<ul>
+<li>model  需要向页面加载的数据       一般为javaBean</li>
+<li>view   页面模板             一般为jsp</li>
+<li>controller  加载哪些数据然后跳转哪个页面         一般为servlet</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/01/js%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/" rel="prev" title="js函数学习">
+      <i class="fa fa-chevron-left"></i> js函数学习
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/01/Mobx-React%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%BA%93%EF%BC%88%E5%85%A5%E9%97%A8%EF%BC%89/" rel="next" title="Mobx:React状态管理库（入门）">
+      Mobx:React状态管理库（入门） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP%E9%A1%B5%E9%9D%A2%EF%BC%88java-server-pages%EF%BC%89%E6%9C%AC%E8%B4%A8%E4%B9%9F%E6%98%AF%E4%B8%80%E4%B8%AAservlet"><span class="nav-number">1.</span> <span class="nav-text">JSP页面（java server pages）本质也是一个servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">2.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-number">3.</span> <span class="nav-text">Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">XMLHttpRequest对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8JQuery%E6%A1%86%E6%9E%B6%E6%9D%A5%E5%8F%91%E9%80%81%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82"><span class="nav-number">5.</span> <span class="nav-text">使用JQuery框架来发送异步请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">6.</span> <span class="nav-text">Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session"><span class="nav-number">7.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL%E9%87%8D%E5%86%99"><span class="nav-number">8.</span> <span class="nav-text">URL重写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6-%E8%BF%87%E6%BB%A4%E5%99%A8-%E5%AD%97%E7%AC%A6%E8%BD%AC%E7%A0%81"><span class="nav-number"></span> <span class="nav-text">主页面访问权限控制 (过滤器 字符转码)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1-%E7%9B%91%E5%90%AC%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">在线人数统计(监听器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml"><span class="nav-number"></span> <span class="nav-text">xml</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xml%E8%A7%A3%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">xml解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number"></span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON%E9%80%9A%E8%BF%876%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9D%A5%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">JSON通过6种数据类型来表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8JS%E4%B8%AD%E6%93%8D%E4%BD%9CJSON"><span class="nav-number">2.</span> <span class="nav-text">在JS中操作JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8Java%E4%B8%AD%E6%93%8D%E4%BD%9CJSON"><span class="nav-number">3.</span> <span class="nav-text">在Java中操作JSON</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
